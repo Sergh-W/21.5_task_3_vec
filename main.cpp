@@ -7,6 +7,16 @@ struct Vector
     double y = 0.00;
     double z = 0.00;
 
+    void add (double val_x,double val_y,double val_x2, double val_y2)
+    {
+        std::cout << "Result = " << val_x + val_x2 << ", " << val_y + val_y2 << std::endl;
+    }
+
+    void subtract (double val_x,double val_y,double val_x2, double val_y2)
+    {
+        std::cout << "Result = " << val_x - val_x2 << ", " << val_y - val_y2 << std::endl;
+    }
+
     void scale (double valX,double valY,double valZ)
     {
         valX *= valZ;
@@ -53,7 +63,7 @@ int main() {
         std::cin >> vec1.x >> vec1.y;
         std::cout << "Enter the x and y coordinate values of the second vector (separated by a space): ";
         std::cin >> vec2.x >> vec2.y;
-        std::cout << "Result = " << vec1.x + vec2.x << ", " << vec1.y + vec2.y << std::endl;
+        vec1.add( vec1.x, vec1.y, vec2.x, vec2.y);
     }
 
     if (command == "subtract") {
@@ -63,7 +73,7 @@ int main() {
         std::cin >> vec1.x >> vec1.y;
         std::cout << "Enter the x and y coordinate values of the second vector (separated by a space): ";
         std::cin >> vec2.x >> vec2.y;
-        std::cout << "Result = " << vec1.x - vec2.x << ", " << vec1.y - vec2.y << std::endl;
+        vec1.subtract( vec1.x, vec1.y, vec2.x, vec2.y);
     }
 
     if (command == "scale") {
