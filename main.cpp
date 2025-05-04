@@ -6,39 +6,39 @@ struct Vector
     double x = 0.00;
     double y = 0.00;
     double z = 0.00;
-
-    void add (double val_x,double val_y,double val_x2, double val_y2)
-    {
-        std::cout << "Result = " << val_x + val_x2 << ", " << val_y + val_y2 << std::endl;
-    }
-
-    void subtract (double val_x,double val_y,double val_x2, double val_y2)
-    {
-        std::cout << "Result = " << val_x - val_x2 << ", " << val_y - val_y2 << std::endl;
-    }
-
-    void scale (double valX,double valY,double valZ)
-    {
-        valX *= valZ;
-        valY *= valZ;
-        std::cout << "Result = " << valX << ", " << valY << std::endl;
-    }
-
-    void length (double valX,double valY)
-    {
-        double len = std::pow(valX, 2) + std::pow(valY, 2);
-        len = std::sqrt(len);
-        std::cout << "Vector length = " << len << std::endl;
-    }
-
-    void normalize (double valX,double valY)
-    {
-        double len = std::pow(valX, 2) + std::pow(valY, 2);
-        len = std::sqrt(len);
-        double norm = std::pow ((valX / len), 2) + std::pow ((valY / len), 2);
-        std::cout << "Result = " << norm << std::endl;
-    }
 };
+
+void add (double &x, double &y, double &x2, double &y2)
+{
+    std::cout << "Result = " << x + x2 << ", " << y + y2 << std::endl;
+}
+
+void subtract (double &x, double &y,double &x2, double &y2)
+{
+    std::cout << "Result = " << x - x2 << ", " << y - y2 << std::endl;
+}
+
+void scale (double &x,double &y,double &z)
+{
+    x *= z;
+    y *= z;
+    std::cout << "Result = " << x << ", " << y << std::endl;
+}
+
+void length (double &x, double &y)
+{
+    double len = std::pow(x, 2) + std::pow(y, 2);
+    len = std::sqrt(len);
+    std::cout << "Vector length = " << len << std::endl;
+}
+
+void normalize (double &x, double &y)
+{
+    double len = std::pow(x, 2) + std::pow(y, 2);
+    len = std::sqrt(len);
+    double norm = std::pow ((x / len), 2) + std::pow ((y / len), 2);
+    std::cout << "Result = " << norm << std::endl;
+}
 
 int main() {
     std::string command;
@@ -63,7 +63,7 @@ int main() {
         std::cin >> vec1.x >> vec1.y;
         std::cout << "Enter the x and y coordinate values of the second vector (separated by a space): ";
         std::cin >> vec2.x >> vec2.y;
-        vec1.add( vec1.x, vec1.y, vec2.x, vec2.y);
+        add(vec1.x, vec1.y, vec2.x, vec2.y);
     }
 
     if (command == "subtract") {
@@ -73,28 +73,28 @@ int main() {
         std::cin >> vec1.x >> vec1.y;
         std::cout << "Enter the x and y coordinate values of the second vector (separated by a space): ";
         std::cin >> vec2.x >> vec2.y;
-        vec1.subtract( vec1.x, vec1.y, vec2.x, vec2.y);
+        subtract( vec1.x, vec1.y, vec2.x, vec2.y);
     }
 
     if (command == "scale") {
         Vector vec;
         std::cout << "Enter the x and y coordinate values of the vector and value of scalar (separated by a space): ";
         std::cin >> vec.x >> vec.y >> vec.z;
-        vec.scale(vec.x, vec.y, vec.z);
+        scale(vec.x, vec.y, vec.z);
     }
 
     if (command == "length") {
         Vector vec;
         std::cout << "Enter the x and y coordinate values of the vector (separated by a space): ";
         std::cin >> vec.x >> vec.y;
-        vec.length(vec.x, vec.y);
+        length(vec.x, vec.y);
     }
 
     if (command == "normalize") {
         Vector vec;
         std::cout << "Enter the x and y coordinate values of the vector (separated by a space): ";
         std::cin >> vec.x >> vec.y;
-        vec.normalize(vec.x, vec.y);
+        normalize(vec.x, vec.y);
     }
 
     else if (command != "add" && command != "subtract" && command != "scale"
